@@ -15,3 +15,4 @@
 
 /lib/seeders/*
 /spec/cassettes/*
+/db/seeds.rb

@@ -7,4 +7,8 @@ class NewsletterArticle < ActiveRecord::Base
   validates :send_article, presence: true
 
   validates :newsletter, uniqueness: { scope: :article }
+
+  def article_title
+    article.title
+  end
 end

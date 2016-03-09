@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root 'contacts#new'
 
   resources :contacts, only: [:new, :create]
+
+  resources :newsletters, only: [:index, :edit, :update]
 end

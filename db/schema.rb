@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306170321) do
+ActiveRecord::Schema.define(version: 20160308035652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.date     "article_date", null: false
+    t.string   "title",        null: false
+    t.string   "url",          null: false
+    t.string   "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string   "email",      default: "", null: false
@@ -23,6 +32,22 @@ ActiveRecord::Schema.define(version: 20160306170321) do
   end
 
   add_index "contacts", ["email"], name: "index_contacts_on_email", unique: true, using: :btree
+
+  create_table "newsletter_articles", force: :cascade do |t|
+    t.integer  "newsletter_id",               null: false
+    t.integer  "article_id",                  null: false
+    t.string   "send",          default: "t", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "newsletters", force: :cascade do |t|
+    t.date     "newsletter_date", null: false
+    t.string   "title",           null: false
+    t.string   "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",                              null: false

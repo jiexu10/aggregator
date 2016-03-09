@@ -40,12 +40,13 @@ group :development, :test do
   gem 'pry-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'valid_attribute'
 end
 
 group :test do
   gem 'launchy', require: false
+  gem 'email_spec'
 end
 
 group :production do

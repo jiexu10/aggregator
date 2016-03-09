@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+gem 'webmock'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -42,11 +43,13 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'valid_attribute'
+  gem 'vcr'
 end
 
 group :test do
   gem 'launchy', require: false
   gem 'email_spec'
+  gem 'database_cleaner'
 end
 
 group :production do

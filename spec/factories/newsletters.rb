@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :newsletter do
-    newsletter_date Date.today
+    sequence(:newsletter_date) { |n| Date.today - n }
     title 'this is the title'
     description 'descript'
   end

@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308035652) do
+ActiveRecord::Schema.define(version: 20160309055559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.date     "article_date", null: false
-    t.string   "title",        null: false
-    t.string   "url",          null: false
+    t.date     "article_date",       null: false
+    t.string   "title",              null: false
+    t.string   "url",                null: false
     t.string   "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "newsletter_feed_id", null: false
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -34,11 +35,18 @@ ActiveRecord::Schema.define(version: 20160308035652) do
   add_index "contacts", ["email"], name: "index_contacts_on_email", unique: true, using: :btree
 
   create_table "newsletter_articles", force: :cascade do |t|
-    t.integer  "newsletter_id",               null: false
-    t.integer  "article_id",                  null: false
-    t.string   "send",          default: "t", null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "newsletter_id",                  null: false
+    t.integer  "article_id",                     null: false
+    t.string   "send_article",  default: "true", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "newsletter_feeds", force: :cascade do |t|
+    t.string   "feed_name",  null: false
+    t.string   "url",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "newsletters", force: :cascade do |t|

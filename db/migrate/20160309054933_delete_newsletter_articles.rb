@@ -1,5 +1,9 @@
-class CreateNewsletterArticles < ActiveRecord::Migration
-  def change
+class DeleteNewsletterArticles < ActiveRecord::Migration
+  def up
+    drop_table :newsletter_articles
+  end
+
+  def down
     create_table :newsletter_articles do |t|
       t.integer :newsletter_id, null: false
       t.integer :article_id, null: false

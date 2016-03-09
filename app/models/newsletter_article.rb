@@ -4,5 +4,7 @@ class NewsletterArticle < ActiveRecord::Base
 
   validates :newsletter, presence: true
   validates :article, presence: true
-  validates :send, presence: true
+  validates :send_article, presence: true
+
+  validates :newsletter, uniqueness: { scope: :article }
 end

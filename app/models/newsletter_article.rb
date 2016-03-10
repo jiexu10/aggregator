@@ -1,6 +1,6 @@
 class NewsletterArticle < ActiveRecord::Base
-  belongs_to :newsletter, inverse_of: :newsletter_articles
-  belongs_to :article, inverse_of: :newsletter_articles
+  belongs_to :newsletter
+  belongs_to :article
 
   validates :newsletter, presence: true
   validates :article, presence: true

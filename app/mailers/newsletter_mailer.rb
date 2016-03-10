@@ -2,7 +2,6 @@ class NewsletterMailer < ActionMailer::Base
   default from: "#{ENV['FROM_NAME']} <#{ENV['FROM_EMAIL']}>"
 
   def mail_newsletter(contact_list, newsletter = Newsletter.current)
-    puts "Generating news feed..."
     @newsletter = newsletter
     puts "Sending emails."
     contact_emails = contact_list.map { |contact| contact.email }

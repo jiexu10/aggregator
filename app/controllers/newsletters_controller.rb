@@ -1,5 +1,5 @@
 class NewslettersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user, except: [:index]
 
   def index
     @newsletters = Newsletter.all.order('newsletter_date desc')
@@ -43,5 +43,12 @@ class NewslettersController < ApplicationController
 
   def newsletter_params
     params.require(:newsletter).permit(:title, :description, articles_to_send: [])
+  end
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      flash[:error] = 'Access denied.'
+      redirect_to root_path
+    end
   end
 end

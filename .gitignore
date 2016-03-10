@@ -12,7 +12,3 @@
 !/log/.keep
 /tmp
 .env
-
-/lib/seeders/*
-/spec/cassettes/*
-/db/seeds.rb

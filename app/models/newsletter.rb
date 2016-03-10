@@ -10,7 +10,6 @@ class Newsletter < ActiveRecord::Base
   end
 
   def self.current
-    newsletters_sorted = Newsletter.all.order('newsletter_date desc')
-    newsletters_sorted.first
+    Newsletter.order('newsletter_date DESC').first
   end
 end

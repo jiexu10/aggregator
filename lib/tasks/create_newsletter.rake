@@ -7,6 +7,8 @@ task create_newsletter: :environment do
   newsletter = Newsletter.find_or_create_by(newsletter_date: today, title: 'Default Title')
 
   pull_news(today, newsletter)
+
+  NewsletterMailer.mail_newsletter(Contact.all, newsletter).deliver_now
 end
 
 def pull_news(date, newsletter)

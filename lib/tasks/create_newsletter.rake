@@ -2,7 +2,6 @@ require 'rss'
 
 desc 'pull daily articles from feeds and make newsletter'
 task create_newsletter: :environment do
-
   today = Date.today
   newsletter = Newsletter.find_or_create_by(newsletter_date: today, title: 'Default Title')
 

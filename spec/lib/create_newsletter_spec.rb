@@ -9,6 +9,7 @@ RSpec.describe 'create_newsletter.rake', vcr: true do
 
   before(:each) do
     load File.expand_path("../../../lib/tasks/create_newsletter.rake", __FILE__)
+    load File.expand_path("../../../lib/tasks/run_mailer.rake", __FILE__)
     load File.expand_path("../../../lib/seeders/newsletter_feed_seeder.rb", __FILE__)
     Rake::Task.define_task(:environment)
 
@@ -18,6 +19,7 @@ RSpec.describe 'create_newsletter.rake', vcr: true do
   describe 'create_newsletter' do
     it 'creates and sends the newsletter' do
       Rake::Task['create_newsletter'].invoke
+      Rake::Task['run_mailer'].invoke
 
       expect(Newsletter.current.articles.count).to be > 0
 
